@@ -1,0 +1,142 @@
+:root {
+  --li-hover-color: #2a2a2a;
+  --li-color: #121212;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+main {
+  background-image: url("./images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+section {
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(3px);
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  margin-bottom: 30px;
+}
+
+.search {
+  margin-top: 30px;
+}
+
+.search form {
+  display: flex;
+  flex-direction: column;
+}
+.search form > * {
+  border-style: none;
+  border-radius: 20px;
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.search form input {
+  padding-left: 20px;
+}
+
+.search form button {
+  background-color: #1ed760;
+  color: white;
+  font-weight: bold;
+}
+
+.songs {
+  color: white;
+}
+
+.songs .song {
+  background-color: var(--li-color);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: default;
+}
+
+.songs .song:last-child {
+  margin-bottom: 0;
+}
+
+.songs .song:hover {
+  background-color: var(--li-hover-color);
+}
+
+.songs img {
+  margin-right: 20px;
+  width: 64px;
+  height: auto;
+}
+
+.songs .info {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.songs .info .track {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.songs .duration {
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: 20px
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.gallery img {
+  width: 500px;
+}
+
+@media (max-width: 600px) {
+  main {
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
+    justify-content: start;
+    padding: 20px;
+  }
+  section {
+    background-color: unset;
+    backdrop-filter: unset;
+    padding: 0px;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .search {
+    height: 20%;
+    margin-top: 0;
+  }
+
+  .songs {
+    max-height: 50%;
+  }
+
+  .gallery img {
+    width: 100%;
+  }
+}
