@@ -53,10 +53,15 @@ section {
   background-color: #1ed760;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .songs {
   color: white;
+}
+
+.songs:not(:has(>.song)) {
+  display: none;
 }
 
 .songs .song {
@@ -101,13 +106,24 @@ section {
   margin-right: 20px
 }
 
+.player {
+  display: none;
+  background-color: unset;
+  padding: 0;
+  max-width: 560px;
+}
+
 .gallery {
+  display: none;
+}
+
+.gallery .images {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
 }
 
-.gallery img {
+.gallery .images img {
   width: 500px;
 }
 
