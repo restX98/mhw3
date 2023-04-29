@@ -1,3 +1,5 @@
+"use strict";
+
 function selectSongHandler(e) {
   const embedIFrame = document.querySelector("#embed-iframe");
   const songsBox = document.querySelector(".player");

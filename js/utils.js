@@ -1,3 +1,5 @@
+"use strict";
+
 function setCookie(cName, cValue, expireIn) {
   if (!cName || !cValue) throw new Error("Missing Parameters");
   let cookie = cName + "=" + cValue;
