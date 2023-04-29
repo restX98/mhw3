@@ -35,5 +35,19 @@ function generateImagesHandler(e) {
   const song = document.querySelector(".songs .song.active");
 
   const { id } = song.dataset;
-  getLyric(id);
+  getLyric(id)
+    .then((result) => {
+      const lyric = result.lines.map((line) => line.words).join(" ");
+      getSummary(lyric)
+        .then((result) => {
+          document
+            .querySelectorAll(".gallery .images img")
+            .forEach((img) => img.remove());
+          getImages(result.choices[0].text)
+            .then((result) => updateImages(result.data))
+            .catch((error) => console.log("error", error));
+        })
+        .catch((error) => console.log("error", error));
+    })
+    .catch((error) => console.log("error", error));
 }

@@ -63,15 +63,9 @@ function getLyric(trackId) {
   };
   const uri = `https://spotify-lyric-api.herokuapp.com/?trackid=${trackId}`;
 
-  fetch(uri, requestOptions)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      const lyric = result.lines.map((line) => line.words).join("\n");
-      console.log(lyric);
-    })
-    .catch((error) => console.log("error", error));
+  return fetch(uri, requestOptions).then((response) => {
+    return response.json();
+  });
 }
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {};

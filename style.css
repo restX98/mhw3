@@ -120,7 +120,7 @@ section {
   max-width: 560px;
 }
 
-.gallery {
+.gallery:not(:has(.images>img)) {
   display: none;
 }
 

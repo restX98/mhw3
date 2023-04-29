@@ -116,3 +116,12 @@ function updateSongs(songs) {
     song.addEventListener("click", selectSongHandler);
   });
 }
+
+function updateImages(images) {
+  const imagesBox = document.querySelector(".gallery .images");
+
+  images.forEach((img) => {
+    const imgEl = createImg(img.url);
+    imagesBox.appendChild(imgEl);
+  });
+}
