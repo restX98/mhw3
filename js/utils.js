@@ -127,3 +127,14 @@ function updateImages(images) {
     imagesBox.appendChild(imgEl);
   });
 }
+
+function spinner(text, disabled) {
+  const spinner = document.querySelector(".spinner");
+  const textEl = document.querySelector(".spinner .text");
+  textEl.textContent = text;
+  spinner.style.display = disabled ? "none" : "flex";
+}
+
+function errorHandler() {
+  spinner("", true);
+}

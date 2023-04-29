@@ -20,6 +20,26 @@ button {
   width: 100%;
 }
 
+.spinner {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #121212aa;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-size: 1.25rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner img {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
 main {
   background-image: url("./images/background.jpg");
   background-size: cover;

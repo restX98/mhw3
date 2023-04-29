@@ -33,19 +33,25 @@ function generateImagesHandler(e) {
   const song = document.querySelector(".songs .song.active");
 
   const { id } = song.dataset;
+  spinner("Stiamo recuperando il testo della canzone...");
   getLyric(id)
     .then((result) => {
       const lyric = result.lines.map((line) => line.words).join(" ");
+      spinner("Stiamo riassumento il testo della canzone...");
       getSummary(lyric)
         .then((result) => {
           document
             .querySelectorAll(".gallery .images img")
             .forEach((img) => img.remove());
+          spinner("Stiamo creando le immagini...");
           getImages(result.choices[0].text)
-            .then((result) => updateImages(result.data))
+            .then((result) => {
+              spinner("", true);
+              updateImages(result.data);
+            })
             .catch((error) => console.log("error", error));
         })
         .catch((error) => console.log("error", error));
     })
-    .catch((error) => console.log("error", error));
+    .catch((error) => errorHandler());
 }
