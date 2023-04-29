@@ -23,11 +23,10 @@ function getCookie(cname) {
   return "";
 }
 
-function createSongItem(uri, trackName, artistName, durationTime, imgSrc) {
+function createSongItem(id, uri, trackName, artistName, durationTime, imgSrc) {
   const dataAttribute = {
+    id: id,
     uri: uri,
-    name: trackName,
-    artist: artistName,
   };
   const songItem = createDiv("song", dataAttribute);
   const img = createImg(imgSrc);
@@ -103,14 +102,14 @@ function updateSongs(songs) {
   const songsBox = document.querySelector(".songs");
   document.querySelectorAll(".songs .song").forEach((song) => song.remove());
   songs.forEach((song) => {
-    const { uri, name, artists, album } = song;
+    const { id, uri, name, artists, album } = song;
     const artist = artists.map((artist) => artist.name).join(", ");
     const duration = msToMin(song.duration_ms);
     const images = album.images;
     const image =
       images.find((image) => image.height === 64) || images[images.length - 1];
     songsBox.appendChild(
-      createSongItem(uri, name, artist, duration, image.url)
+      createSongItem(id, uri, name, artist, duration, image.url)
     );
   });
   document.querySelectorAll(".songs .song").forEach((song) => {

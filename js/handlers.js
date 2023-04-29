@@ -33,4 +33,7 @@ function searchHandler(e) {
 
 function generateImagesHandler(e) {
   const song = document.querySelector(".songs .song.active");
+
+  const { id } = song.dataset;
+  getLyric(id);
 }

@@ -1,5 +1,7 @@
 "use strict";
 
+const { clientId, clientSecret } = SpotifyCredentials;
+
 function onTokenJson(json, callback) {
   setCookie("spotifyToken", json.access_token, json.expires_in);
   callback();
@@ -31,7 +33,7 @@ function getToken(callback) {
 }
 
 function searchForItems(track, artist, callback) {
-  const token = getToken(() => searchForItems(track, artist));
+  const token = getToken(() => searchForItems(track, artist, callback));
   if (!token) return;
   const requestOptions = {
     method: "get",
@@ -53,6 +55,23 @@ function searchForItems(track, artist, callback) {
       const { items } = result.tracks;
       callback(items);
     });
+}
+
+function getLyric(trackId) {
+  var requestOptions = {
+    method: "get",
+  };
+  const uri = `https://spotify-lyric-api.herokuapp.com/?trackid=${trackId}`;
+
+  fetch(uri, requestOptions)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      const lyric = result.lines.map((line) => line.words).join("\n");
+      console.log(lyric);
+    })
+    .catch((error) => console.log("error", error));
 }
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {};

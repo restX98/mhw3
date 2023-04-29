@@ -1,2 +1,4 @@
-const clientId = "";
-const clientSecret = "";
+const SpotifyCredentials = {
+  clientId: "",
+  clientSecret: "",
+};
