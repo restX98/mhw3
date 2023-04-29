@@ -68,4 +68,6 @@ function getLyric(trackId) {
   });
 }
 
-window.onSpotifyIframeApiReady = (IFrameAPI) => {};
+window.onSpotifyIframeApiReady = (IFrameAPI) => {
+  window.SpotifyIFrameAPI = IFrameAPI;
+};

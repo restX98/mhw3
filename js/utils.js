@@ -115,6 +115,8 @@ function updateSongs(songs) {
   document.querySelectorAll(".songs .song").forEach((song) => {
     song.addEventListener("click", selectSongHandler);
   });
+  document.querySelector(".player iframe").remove();
+  document.querySelector(".player").prepend(createDiv("embed-iframe"));
 }
 
 function updateImages(images) {

@@ -1,8 +1,7 @@
 "use strict";
 
 function selectSongHandler(e) {
-  const embedIFrame = document.querySelector("#embed-iframe");
-  const songsBox = document.querySelector(".player");
+  const embedIFrame = document.querySelector(".embed-iframe");
   const target = e.currentTarget;
   const options = {
     width: "100%",
@@ -21,7 +20,6 @@ function selectSongHandler(e) {
   };
   SpotifyIframeApi.createController(embedIFrame, options, callback);
   target.classList.add("active");
-  songsBox.style.display = "block";
 }
 
 function searchHandler(e) {
