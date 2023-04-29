@@ -115,7 +115,8 @@ function updateSongs(songs) {
   document.querySelectorAll(".songs .song").forEach((song) => {
     song.addEventListener("click", selectSongHandler);
   });
-  document.querySelector(".player iframe").remove();
+  const iframe = document.querySelector(".player iframe");
+  if (!!iframe) iframe.remove();
   document.querySelector(".player").prepend(createDiv("embed-iframe"));
 }
 
@@ -135,6 +136,7 @@ function spinner(text, disabled) {
   spinner.style.display = disabled ? "none" : "flex";
 }
 
-function errorHandler() {
+function errorHandler(message) {
   spinner("", true);
+  console.log(message);
 }

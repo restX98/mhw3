@@ -36,22 +36,38 @@ function generateImagesHandler(e) {
   spinner("Stiamo recuperando il testo della canzone...");
   getLyric(id)
     .then((result) => {
+      if (result.error) {
+        throw new Error(
+          result.message || "Lyrics for this track is not available on spotify!"
+        );
+      }
       const lyric = result.lines.map((line) => line.words).join(" ");
       spinner("Stiamo riassumento il testo della canzone...");
       getSummary(lyric)
         .then((result) => {
+          if (result.error) {
+            throw new Error(
+              "Non è stato possibile creare il riassunto perché:" +
+                result.error.message
+            );
+          }
           document
             .querySelectorAll(".gallery .images img")
             .forEach((img) => img.remove());
           spinner("Stiamo creando le immagini...");
+          if (!result.choices || result.choices.length === 0)
+            throw new Error("Non è stato possibile creare il riassunto!");
           getImages(result.choices[0].text)
             .then((result) => {
+              if (result.error) {
+                throw new Error(result.error.message);
+              }
               spinner("", true);
               updateImages(result.data);
             })
-            .catch((error) => console.log("error", error));
+            .catch((response) => errorHandler(response.message));
         })
-        .catch((error) => console.log("error", error));
+        .catch((response) => errorHandler(response.message));
     })
-    .catch((error) => errorHandler());
+    .catch((response) => errorHandler(response.message));
 }

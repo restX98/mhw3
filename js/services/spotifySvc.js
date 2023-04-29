@@ -52,8 +52,14 @@ function searchForItems(track, artist, callback) {
   return fetch(uri, requestOptions)
     .then((response) => response.json())
     .then((result) => {
+      if (result.error) {
+        throw new Error(result.error.message || "Something went wrong!");
+      }
       const { items } = result.tracks;
       callback(items);
+    })
+    .catch((response) => {
+      errorHandler(response.message);
     });
 }
 
