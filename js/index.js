@@ -4,7 +4,7 @@ function selectSongHandler(e) {
   const target = e.currentTarget;
   const options = {
     width: "100%",
-    height: "100%",
+    height: "80px",
     uri: target.dataset.uri,
   };
   const callback = (EmbedController) => {
@@ -12,10 +12,13 @@ function selectSongHandler(e) {
       song.removeEventListener("click", selectSongHandler);
       song.addEventListener("click", () => {
         EmbedController.loadUri(song.dataset.uri);
+        document.querySelector(".song.active").classList.remove("active");
+        song.classList.add("active");
       });
     });
   };
   SpotifyIframeApi.createController(embedIFrame, options, callback);
+  target.classList.add("active");
   songsBox.style.display = "block";
 }
 

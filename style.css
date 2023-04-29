@@ -8,6 +8,18 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+button {
+  border-style: none;
+  border-radius: 20px;
+  height: 40px;
+  margin-bottom: 15px;
+  background-color: #1e77d7;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
 main {
   background-image: url("./images/background.jpg");
   background-size: cover;
@@ -23,7 +35,6 @@ main {
 
 section {
   background-color: rgba(0,0,0,0.5);
-  backdrop-filter: blur(3px);
   padding: 30px;
   width: 90%;
   max-width: 500px;
@@ -75,11 +86,7 @@ section {
   cursor: default;
 }
 
-.songs .song:last-child {
-  margin-bottom: 0;
-}
-
-.songs .song:hover {
+.songs .song:hover, .songs .song.active {
   background-color: var(--li-hover-color);
 }
 
