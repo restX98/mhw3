@@ -30,7 +30,7 @@ function getToken(callback) {
   return null;
 }
 
-function searchForItems(track, artist) {
+function searchForItems(track, artist, callback) {
   const token = getToken(() => searchForItems(track, artist));
   if (!token) return;
   const requestOptions = {
@@ -51,7 +51,7 @@ function searchForItems(track, artist) {
     .then((response) => response.json())
     .then((result) => {
       const { items } = result.tracks;
-      updateSongs(items);
+      callback(items);
     });
 }
 

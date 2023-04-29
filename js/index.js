@@ -26,7 +26,7 @@ function searchHandler(e) {
   e.preventDefault();
   const form = e.target;
   const { track, artist } = serialize(form);
-  searchForItems(track, artist);
+  searchForItems(track, artist, updateSongs);
 }
 
 const searchForm = document.querySelector(".search form");
