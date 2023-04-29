@@ -159,7 +159,7 @@ section {
     max-height: 50%;
   }
 
-  .gallery img {
+  .gallery .images img {
     width: 100%;
   }
 }
