@@ -47,7 +47,7 @@ function generateImagesHandler(e) {
         .then((result) => {
           if (result.error) {
             throw new Error(
-              "Non è stato possibile creare il riassunto perché:" +
+              "Non è stato possibile creare il riassunto perché:\n" +
                 result.error.message
             );
           }
@@ -70,4 +70,9 @@ function generateImagesHandler(e) {
         .catch((response) => errorHandler(response.message));
     })
     .catch((response) => errorHandler(response.message));
+}
+
+function errorCloserHandler(e) {
+  const errorContainer = document.querySelector(".error-container");
+  errorContainer.style.display = "none";
 }

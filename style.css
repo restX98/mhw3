@@ -40,6 +40,28 @@ button {
   margin-bottom: 20px;
 }
 
+.error-container {
+  display: none;
+  max-width: 500px;
+  width: 90%;
+  background-color: #f24547;
+  position: fixed;
+  top: 20px;
+  color: white;
+  padding: 10px;
+}
+
+.error-container .closer {
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.error-container .closer img {
+  display: block;
+  width: 15px;
+  margin: 0 0 auto auto;
+}
+
 main {
   background-image: url("./images/background.jpg");
   background-size: cover;

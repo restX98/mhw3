@@ -137,6 +137,9 @@ function spinner(text, disabled) {
 }
 
 function errorHandler(message) {
+  const errorContainer = document.querySelector(".error-container");
+  const errorMessage = document.querySelector(".error-container .text");
+  errorMessage.textContent = message || "Something went wrong";
+  errorContainer.style.display = "block";
   spinner("", true);
-  console.log(message);
 }
